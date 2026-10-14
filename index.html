@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10111b">
+<title>SCENEX | Roleplay Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#0e1018;--panel:#171a27;--panel2:#202437;--line:#30354b;--text:#f5f6ff;--muted:#a7adc4;--pink:#ff5c9a;--violet:#9a83ff;--cyan:#74e4ed;--good:#8be0b1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% -5%,#3a2048 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.wrap{max-width:950px;margin:auto;padding:0 16px 100px}.top{position:sticky;top:0;z-index:5;background:#0e1018eF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12;padding:14px 0}.topinner{max-width:950px;margin:auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-weight:950;letter-spacing:2px;font-size:22px}.logo span{color:var(--pink)}.tiny{font-size:12px;color:var(--muted)}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:12px}
+h1{font-size:clamp(27px,6vw,42px);line-height:1.08;margin:24px 0 10px;letter-spacing:-1.2px}h1 em{font-style:normal;color:var(--pink)}h2{font-size:19px;margin:0 0 12px}p{margin:0 0 12px}.muted{color:var(--muted)}.hero{padding:18px 0 24px}.hero p{max-width:600px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:11px 14px;border-radius:13px;font-weight:750}.btn.primary{border:0;color:#170d19;background:linear-gradient(120deg,var(--pink),#c49aff)}.btn.ghost{background:transparent}.btn.small{padding:7px 10px;font-size:13px}.btn:disabled{opacity:.45;cursor:not-allowed}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:4px 0 20px}.tab{background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:11px 6px;border-radius:12px;font-weight:750}.tab.active{background:#30213b;border-color:#7e4d7a;color:#fff}
+.view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(150deg,var(--panel),#151724);border:1px solid var(--line);border-radius:18px;padding:15px;min-width:0}.fandom{min-height:142px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}.emoji{font-size:27px}.cardtitle{font-size:17px;font-weight:850;margin-top:7px}.cardfoot{display:flex;align-items:center;justify-content:space-between;gap:8px}.tag{font-size:11px;color:var(--cyan);background:#193039;border-radius:999px;padding:5px 8px}
+.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted);font-weight:700}.field input,.field textarea,.field select{width:100%;background:#10131e;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}.field textarea{min-height:80px;resize:vertical}.field select{appearance:auto}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.wide{grid-column:1/-1}
+.notice{background:#17252a;border:1px solid #2d5a60;border-radius:14px;padding:12px 14px;color:#c9f5f3;font-size:13px;margin:12px 0}.storylist{display:grid;gap:10px}.storyrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.storyrow .details{min-width:0}.storyrow strong{display:block;overflow-wrap:anywhere}.storyrow small{color:var(--muted)}
+.chatbox{display:flex;flex-direction:column;height:min(62vh,560px);min-height:360px;background:#111420;border:1px solid var(--line);border-radius:18px;overflow:hidden}.chathead{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}.messages{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:88%;padding:10px 12px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.ai{align-self:flex-start;background:#24283a;border:1px solid #343951}.bubble.user{align-self:flex-end;background:#44223b;border:1px solid #754263}.bubble .speaker{font-size:11px;color:var(--cyan);font-weight:850;margin-bottom:4px}.composer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);align-items:flex-end}.composer textarea{flex:1;min-width:0;max-height:110px;resize:vertical;background:#202437;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:11px}.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px}.bottomnote{margin:20px 0;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:540px){.wrap{padding-left:12px;padding-right:12px}.topinner{padding:0 12px}.grid{gap:9px}.card{padding:12px}.fandom{min-height:137px}.formgrid{grid-template-columns:1fr}.wide{grid-column:auto}.tabs{gap:5px}.tab{font-size:13px}.pill{display:none}.chatbox{height:58vh;min-height:350px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topinner"><div><div class="logo">SCENE<span>X</span></div><div class="tiny">Your story. Your rules.</div></div><div class="pill">MOBILE PROTOTYPE · 0.2</div></div></header>
+<main class="wrap">
+<section class="hero">
+<h1>Step into the <em>story.</em></h1>
+<p>Build a roleplay, choose the world, and play your character your way. Your character's choices and dialogue stay yours.</p>
+<div class="actions"><button class="btn primary" id="startBtn">＋ Create a roleplay</button><button class="btn ghost" id="continueBtn">Continue last story</button></div>
+</section>
+<nav class="tabs" aria-label="Main sections">
+<button class="tab active" data-view="discover">Discover</button><button class="tab" data-view="create">Create</button><button class="tab" data-view="stories">My stories</button>
+</nav>
+<section id="discover" class="view active">
+<h2>Choose your universe</h2><p class="muted">Pick a fandom to set up your scene.</p>
+<div class="grid" id="fandomGrid"></div>
+<div class="notice">Prototype note: this version works in your browser and saves stories on this device. It does not connect to a real AI yet.</div>
+</section>
+<section id="create" class="view">
+<div class="card">
+<h2>Create your roleplay</h2><p class="muted">You can change any detail later.</p>
+<div class="field"><label for="fandom">Universe / fandom</label><select id="fandom"><option>Scream</option><option>Batman / Gotham</option><option>Harry Potter</option><option>The Vampire Diaries</option><option>Cobra Kai</option><option>The Rookie</option><option>Custom universe</option></select></div>
+<div class="formgrid">
+<div class="field"><label for="charName">Your character's name</label><input id="charName" placeholder="e.g. Colton"></div>
+<div class="field"><label for="role">Character role</label><input id="role" placeholder="e.g. new student"></div>
+<div class="field wide"><label for="scene">Starting situation</label><textarea id="scene" placeholder="What is happening when the story begins?"></textarea></div>
+<div class="field wide"><label for="style">Story style</label><select id="style"><option>Canon characters, serious story</option><option>Action and fights</option><option>Horror and suspense</option><option>Comedy and chaos</option><option>Romance and drama</option><option>Custom mix</option></select></div>
+</div>
+<div class="notice">SCENEX rules: you control your character. The narrator controls everyone else. Replies stay concise, and your story is saved locally.</div>
+<button class="btn primary" id="createBtn">Create story →</button>
+</div>
+</section>
+<section id="stories" class="view">
+<div class="storyrow"><div><h2>My stories</h2><p class="muted">Saved in this browser on this device.</p></div><button class="btn small" id="exportBtn">Export backup</button></div>
+<div class="storylist" id="storyList"></div>
+</section>
+<section id="play" class="view">
+<div class="storyrow" style="margin-bottom:12px"><div><h2 id="playTitle">Your story</h2><div class="muted" id="playSub"></div></div><button class="btn small" id="backStories">← Stories</button></div>
+<div class="chatbox">
+<div class="chathead"><div><strong>Roleplay</strong><div class="tiny">You play your character</div></div><button class="btn small ghost" id="editStory">Edit setup</button></div>
+<div class="messages" id="messages" aria-live="polite"></div>
+<form class="composer" id="chatForm"><textarea id="chatInput" rows="1" placeholder="Write your character's action or dialogue…" aria-label="Your message"></textarea><button class="btn primary" type="submit">Send</button></form>
+</div>
+<p class="tiny" style="margin-top:9px">Demo responses are scripted. A real AI connection can be added later.</p>
+</section>
+<section id="settings" class="view">
+<div class="card"><h2>Settings & privacy</h2><p class="muted">This prototype stores stories only in your browser's local storage. Clearing browser data can erase them.</p><button class="btn" id="downloadBackup">Download story backup</button> <button class="btn ghost" id="clearAll">Delete all stories</button></div>
+</section>
+<div class="bottomnote">SCENEX prototype · Made for phone screens first ✦</div>
+</main>
+<script>
+const fandoms=[
+ {name:"Scream",emoji:"🔪",desc:"Horror · mystery"},
+ {name:"Batman / Gotham",emoji:"🦇",desc:"Heroes · crime"},
+ {name:"Harry Potter",emoji:"⚡",desc:"Magic · adventure"},
+ {name:"The Vampire Diaries",emoji:"🩸",desc:"Supernatural · drama"},
+ {name:"Cobra Kai",emoji:"🥋",desc:"Dojo · rivalries"},
+ {name:"The Rookie",emoji:"🚔",desc:"Police · action"}
+];
+const $=id=>document.getElementById(id);
+let stories=load(), currentId=null;
+function load(){try{return JSON.parse(localStorage.getItem("scenex_stories_v2")||"[]")}catch(e){return []}}
+function persist(){localStorage.setItem("scenex_stories_v2",JSON.stringify(stories))}
+function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function switchView(name){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===name));document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===name));window.scrollTo({top:0,behavior:"smooth"});if(name==="stories")renderStories()}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
+$("startBtn").onclick=()=>switchView("create");
+$("continueBtn").onclick=()=>{if(stories.length)openStory(stories[0].id);else switchView("create")};
+$("fandomGrid").innerHTML=fandoms.map(f=>`<article class="card fandom"><div><div class="emoji">${f.emoji}</div><div class="cardtitle">${f.name}</div><div class="tiny">${f.desc}</div></div><div class="cardfoot"><span class="tag">Roleplay</span><button class="btn small" data-pick="${escapeHTML(f.name)}">Choose →</button></div></article>`).join("");
+$("fandomGrid").addEventListener("click",e=>{let b=e.target.closest("[data-pick]");if(b){$("fandom").value=b.dataset.pick;switchView("create")}});
+function makeStory(){
+ const fandom=$("fandom").value, name=$("charName").value.trim()||"Your character", role=$("role").value.trim(), scene=$("scene").value.trim()||"The scene is just beginning. What do you do?", style=$("style").value;
+ const s={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),fandom,name,role,scene,style,created:Date.now(),messages:[{who:"ai",text:`${scene}\n\n${fandom} · ${style}\nYou're playing ${name}${role?" ("+role+")":""}. Everyone turns toward you, waiting to see what happens next.`}]};
+ stories.unshift(s);persist();openStory(s.id)
+}
+$("createBtn").onclick=makeStory;
+function renderStories(){
+ const el=$("storyList");
+ if(!stories.length){el.innerHTML='<div class="empty">No stories yet. Pick a universe and create your first scene! ✨</div>';return}
+ el.innerHTML=stories.map(s=>`<article class="card storyrow"><div class="details"><strong>${escapeHTML(s.name)} · ${escapeHTML(s.fandom)}</strong><small>${new Date(s.created).toLocaleDateString()} · ${s.messages.length} messages</small></div><button class="btn small" data-open="${s.id}">Open</button><button class="btn small ghost" data-delete="${s.id}" aria-label="Delete story">✕</button></article>`).join("");
+ el.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openStory(b.dataset.open));
+ el.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{stories=stories.filter(s=>s.id!==b.dataset.delete);persist();renderStories()});
+}
+function openStory(id){currentId=id;const s=stories.find(x=>x.id===id);if(!s)return; $("playTitle").textContent=s.name+" · "+s.fandom;$("playSub").textContent=(s.role||"Your character")+" · "+s.style;renderMessages();switchView("play")}
+function renderMessages(){const s=stories.find(x=>x.id===currentId);if(!s)return;$("messages").innerHTML=s.messages.map(m=>`<div class="bubble ${m.who==="user"?"user":"ai"}"><div class="speaker">${m.who==="user"?"YOU":"SCENE"}</div>${escapeHTML(m.text)}</div>`).join("");$("messages").scrollTop=$("messages").scrollHeight}
+function replyFor(text,s){
+ const t=text.toLowerCase();
+ if(/who are you|introduce|name/.test(t))return `A character steps forward, watching you carefully. “Names can wait. What matters is what you do next.”`;
+ if(/attack|punch|kick|hit|fight|swing/.test(t))return `Your move changes the whole room. Someone blocks the path while another person reacts, tense and ready. “You really want to do this?”\n\nWhat do you do next?`;
+ if(/leave|walk away|run/.test(t))return `You start to leave. Behind you, someone calls out, “Wait. We need to talk before you go.”`;
+ if(/sorry|apolog/.test(t))return `The tension eases a little. “Okay. I hear you,” they say, though they're still deciding whether to trust you.`;
+ if(text.trim().endsWith("?"))return `They consider your question before answering. “That's a long story. But if you want the truth, I'll tell you what I know.”`;
+ return `The others react to what you said. ${s.fandom==="Scream"?"A phone suddenly buzzes somewhere nearby. Everyone goes quiet.":s.fandom==="Harry Potter"?"A nearby portrait leans forward, clearly listening.":s.fandom==="Batman / Gotham"?"A siren echoes through the street outside.": "Someone studies your expression, trying to figure out what you'll do next."}\n\nYour move.`;
+}
+$("chatForm").addEventListener("submit",e=>{e.preventDefault();const input=$("chatInput"),text=input.value.trim();if(!text||!currentId)return;const s=stories.find(x=>x.id===currentId);if(!s)return;s.messages.push({who:"user",text});s.messages.push({who:"ai",text:replyFor(text,s)});persist();input.value="";renderMessages()});
+$("backStories").onclick=()=>switchView("stories");
+$("editStory").onclick=()=>{const s=stories.find(x=>x.id===currentId);if(!s)return;$("fandom").value=s.fandom;$("charName").value=s.name;$("role").value=s.role;$("scene").value=s.scene;$("style").value=s.style;switchView("create");$("createBtn").textContent="Save as a new story";$("createBtn").onclick=()=>{makeStory();$("createBtn").textContent="Create story →";$("createBtn").onclick=makeStory}};
+function exportData(){const blob=new Blob([JSON.stringify(stories,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="scenex-backup.json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$("exportBtn").onclick=exportData;$("downloadBackup").onclick=exportData;
+$("clearAll").onclick=()=>{if(confirm("Delete every saved SCENEX story from this browser?")){stories=[];persist();renderStories();switchView("stories")}};
+renderStories();
+</script>
+</body>
+</html>
